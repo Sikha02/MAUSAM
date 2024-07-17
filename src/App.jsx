@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './App.css';
 import { FaSearch } from 'react-icons/fa'; // Importing the search icon from Font Awesome
+import { useStateContext } from './context';
 
 function App() {
   const [input, setInput] = useState('');
+  const {weather} = useStateContext();
+  console.log(weather);
 
   return (
     <div className='w-full h-screen text-blue-600 px-8'>
