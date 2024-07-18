@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import './App.css';
-import { FaSearch } from 'react-icons/fa'; // Importing the search icon from Font Awesome
+import { FaSearch } from 'react-icons/fa';
 import { useStateContext } from './context';
+import BackgroundLayout from './Components/BackgroundLayout';
 
 function App() {
   const [input, setInput] = useState('');
-  const {weather} = useStateContext();
-  console.log(weather);
+  const { setPlace } = useStateContext();
 
   return (
     <div className='w-full h-screen text-blue-600 px-8'>
       <nav className='w-full p-3 flex justify-between items-center'>
         <h1 className='font-bold tracking-wide text-3xl'>MAUSAM</h1>
         <div className='bg-white w-[15rem] overflow-hidden shadow-2xl rounded flex items-center p-2 gap-2'>
-        <FaSearch className='text-blue-500 h-[1.5rem] w-[1.5rem]' />{/* Using the search icon in place of image mentioned in video we used tag  */}
+          <FaSearch className='text-blue-500 h-[1.5rem] w-[1.5rem]' />
           <input
             onKeyUp={(e) => {
               if (e.key === 'Enter') {
-                // submit the form
+                setPlace(input);
               }
             }}
             type="text"
@@ -28,9 +28,9 @@ function App() {
           />
         </div>
       </nav>
+      <BackgroundLayout />
     </div>
   );
 }
 
 export default App;
-
